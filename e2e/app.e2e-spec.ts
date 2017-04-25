@@ -1,6 +1,6 @@
 import { StreamSearchPage } from './app.po';
 
-describe('stream-search App', () => {
+describe('stream-searchModule App', () => {
   let page: StreamSearchPage;
 
   beforeEach(() => {

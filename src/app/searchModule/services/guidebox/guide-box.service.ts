@@ -9,10 +9,10 @@ export class GuideBoxService {
 
   constructor(private http: Http) { }
   getFreeMovies(): Observable<any> {
-    return this.http.get(`${this._baseURL}/movies/free}`)
+    return this.http.get(`${this._baseURL}/movies/free`)
       .map(res => res.json());
   };
-  getFreeShows(): Observable<any> {
+  getFreeShows(): any {
     return this.http.get(`${this._baseURL}/shows/free`)
       .map(res => res.json());
   };
