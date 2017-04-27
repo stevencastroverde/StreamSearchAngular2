@@ -1,3 +1,5 @@
-<p>
-  media-search works!
-</p>
+<form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="search">
+  <button type="submit">Search!</button>
+
+</form>

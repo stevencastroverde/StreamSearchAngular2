@@ -11,7 +11,7 @@ export class MoviesComponent implements OnInit {
   constructor(private GuideBoxService: GuideBoxService) { }
 
   ngOnInit() {
-    this.getFreeMovies();
+    
   }
 
   getFreeMovies() {
