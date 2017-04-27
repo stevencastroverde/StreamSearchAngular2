@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { GuideBoxService } from '../services/guidebox/guide-box.service';
 
 @Component({
@@ -7,7 +7,9 @@ import { GuideBoxService } from '../services/guidebox/guide-box.service';
   styleUrls: ['./shows.component.scss']
 })
 export class ShowsComponent implements OnInit {
-  private freeShows: Object;
+ @Input () userSubscriptions: string;
+
+  public freeShows: Object;
 
   constructor(private GuideBoxService: GuideBoxService) { }
 
@@ -19,7 +21,8 @@ export class ShowsComponent implements OnInit {
     this.GuideBoxService.getFreeShows()
       .subscribe(
         data => {
-          data = this.freeShows;
+          this.freeShows = data.results;
+          console.log(this.freeShows);
         }
       );
   }
