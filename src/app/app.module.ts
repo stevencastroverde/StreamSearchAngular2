@@ -7,16 +7,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
-import { MediaSearchComponent } from './media-search/media-search.component';
-import { SingleMovieComponent } from './single-movie/single-movie.component';
-import { SingleShowComponent } from './single-show/single-show.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-//Router
+// Search Module
+import { SearchModule } from './searchModule/search.module';
+
+
+
+
+// Router
 const appRoutes: Routes = [
-  { path:'' , component: LandingPageComponent },
-  { path: '', component: }
+  { path: '' , component: LandingPageComponent },
+  { path: '**', component: PageNotFoundComponent }
 ]
 
 @NgModule({
@@ -24,17 +27,17 @@ const appRoutes: Routes = [
     AppComponent,
     NavComponent,
     FooterComponent,
-    MediaSearchComponent,
-    SingleMovieComponent,
-    SingleShowComponent,
-    SearchResultsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    PageNotFoundComponent,
+
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    SearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
