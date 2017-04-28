@@ -1,2 +1,2 @@
-<app-media-search></app-media-search>
-<app-search-results [freeContent]="freeShows"></app-search-results>
+<app-media-search (userSearchandSources)="searchEventHandler($event)"></app-media-search>
+<app-search-results [searchResults]="searchResults"></app-search-results>

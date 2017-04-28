@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import { Component, OnInit, Input, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-search-results',
@@ -7,21 +7,26 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit {
-    private _freeContent: Object;
+    private _freeContent: Object[];
+    private _searchResults: Object[];
   @Input()
-   set freeContent(results: Object) {
+   set freeContent(results: Object[]) {
     this._freeContent = results;
   }
-  get freeContent(): Object {
+  get freeContent(): Object[] {
     return this._freeContent;
   }
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  @Input ()
+    set searchResults(results: Object[]) {
+    this._searchResults = results;
+  }
+  get searchResults(): Object[] {
+    return this._searchResults;
+  }
+  constructor() { }
 
   ngOnInit() {
-    this.route.data
-      .subscribe((data) => {
-      console.log(data);
-      });
+
   }
 
 }

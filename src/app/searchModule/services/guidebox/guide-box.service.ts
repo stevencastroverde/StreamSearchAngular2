@@ -12,7 +12,7 @@ export class GuideBoxService {
     return this.http.get(`${this._baseURL}/movies/free`)
       .map(res => res.json());
   };
-  getFreeShows(): any {
+  callFreeShows(): any {
     return this.http.get(`${this._baseURL}/shows/free`)
       .map(res => res.json());
   };

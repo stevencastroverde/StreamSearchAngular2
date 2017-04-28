@@ -1,6 +1,5 @@
-import { Component,Output } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import { Router } from '@angular/router';
 import { GuideBoxService } from '../services/guidebox/guide-box.service';
 
 @Component({
@@ -9,14 +8,13 @@ import { GuideBoxService } from '../services/guidebox/guide-box.service';
   styleUrls: ['./media-search.component.scss']
 })
 export class MediaSearchComponent  {
-  @Output ()
+  @Output () userSearchandSources: EventEmitter<any> = new EventEmitter();
+    list: string;
+    term: string;
+
 
   formModel: FormGroup;
-  currentUrl: string;
-
-  constructor(private route: Router, private GuideBoxService: GuideBoxService, private fb: FormBuilder) {
-    this.currentUrl = route.url;
-
+  constructor( private GuideBoxService: GuideBoxService, private fb: FormBuilder) {
     this.formModel = fb.group({
       'search': [''],
       'subscriptionsGroup': fb.group({
@@ -31,35 +29,17 @@ export class MediaSearchComponent  {
       })
     });
   }
-
-
-
-
-
   onSubmit() {
-   this.emitSubscriptions(this.formModel.value.subscriptionsGroup);
-
-    // if (this.currentUrl === '/shows') {
-    //   this.GuideBoxService.searchShows(this.formModel.value.search)
-    //     .subscribe(shows => console.log(shows));
-    // } else if (this.currentUrl === '/movies') {
-    //   this.GuideBoxService.searchMovies(this.formModel.value.search)
-    //     .subscribe(movies => console.log(movies));
-    // } else {
-    //   this.route.navigateByUrl('/');
-    // };
+    this.emitSearchInfo(this.formModel.value.subscriptionsGroup, this.formModel.value.search);
   };
 
-  emitSubscriptions(checkedSubscriptions: FormGroup) {
+  emitSearchInfo(checkedSubscriptions: FormGroup, searchTerm: string) {
       const keys = Object.keys(checkedSubscriptions);
-      const userSubscriptions =  keys.filter(function(key){
+      const filteredSubscriptions =  keys.filter(function(key){
         return checkedSubscriptions[key];
     });
-      console.log(userSubscriptions);
-
-
-
-  }
-
-
+      this.userSearchandSources.emit({
+        list: filteredSubscriptions.join(','),
+        term: searchTerm});
+  };
 }
