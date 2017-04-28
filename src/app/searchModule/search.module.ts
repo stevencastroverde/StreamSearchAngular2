@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { GuideBoxService } from './services/guidebox/guide-box.service'
-import {FreeContentResolverService} from "./services/freeContentResolver/free-content-resolver.service";
+import { GuideBoxService } from './services/guidebox/guide-box.service';
+// Service to help fetch free content before view is rendered TODO: Finish this service!
+// import {FreeContentResolverService} from "./services/freeContentResolver/free-content-resolver.service";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MediaSearchComponent } from './media-search/media-search.component';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
@@ -15,9 +17,7 @@ import { ShowsComponent } from './shows/shows.component';
 
 const routes: Routes = [
   { path: 'shows', component: ShowsComponent},
-  { path: 'movies', component: MoviesComponent, resolve: {
-  data: FreeContentResolverService
-  }
+  { path: 'movies', component: MoviesComponent
   }
 ]
 
@@ -25,7 +25,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     MediaSearchComponent,
@@ -35,6 +37,6 @@ const routes: Routes = [
     MoviesComponent,
     ShowsComponent
   ],
-  providers: [GuideBoxService, FreeContentResolverService]
+  providers: [GuideBoxService]
 })
 export class SearchModule { }

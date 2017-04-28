@@ -1,3 +1,22 @@
-<p>
-  media-search works!
-</p>
+<form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="search">
+  <div formGroupName="subscriptionsGroup">
+   <div>Amazon Prime<input type="checkbox" formControlName="amazon_prime"></div>
+    <div>Hulu<input type="checkbox" formControlName="hulu_plus"></div>
+    <div>Netflix<input type="checkbox" formControlName="netflix"></div>
+    <div>HBO Now<input type="checkbox" formControlName="hbo_now"></div>
+    <div>Drama Fever<input type="checkbox" formControlName="dramafever_premium"></div>
+    <div>Cruncyroll<input type="checkbox" formControlName="cruncyroll_premium"></div>
+    <div>Starz<input type="checkbox" formControlName="starz_subscription"></div>
+    <div>Showtime<input type="checkbox" formControlName="showtime_subscription"></div>
+
+
+
+
+
+
+
+  </div>
+  <button type="submit">Search!</button>
+
+</form>
