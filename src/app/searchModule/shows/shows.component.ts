@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { GuideBoxService } from '../services/guidebox/guide-box.service';
 
+
 @Component({
   selector: 'app-shows',
   templateUrl: './shows.component.html',
@@ -11,14 +12,7 @@ export class ShowsComponent implements OnInit {
   @Input () selectedShowId: number;
   private _searchResults: Object[];
   private _userSubscriptions: string;
-  private _freeShows: Object[];
-    set freeShows(shows: Object[]) {
-      this._freeShows = shows;
-    }
-    get freeShows(): Object[] {
-      return this._freeShows;
-    }
-    // Setter and Getter for Search Results
+  // Setter and Getter for Search Results
     set searchResults(shows: Object[]) {
      this._searchResults = shows;
    }
@@ -42,14 +36,14 @@ export class ShowsComponent implements OnInit {
   constructor(private GuideBoxService: GuideBoxService) { }
 
   ngOnInit() {
-      // this.callFreeShows();
+       this.callFreeShows();
   }
 
   callFreeShows() {
     this.GuideBoxService.callFreeShows()
       .subscribe(
         data => {
-          this.freeShows = data.results;
+          this.searchResults = data.results;
         }
       );
   };
@@ -61,8 +55,15 @@ export class ShowsComponent implements OnInit {
           console.log(this.searchResults);
         });
   }
+  getSpecficShow(showId: number) {
+    this.GuideBoxService.getSpecificShow(showId, this.userSubscriptions)
+      .subscribe(data => console.log(data));
+  }
   searchEventHandler(event: any) {
     this.searchShows(event.term);
     this.userSubscriptions = event.list;
-  }
+  };
+  selectShowEventHandler(showId: number) {
+    this.getSpecficShow(showId);
+  };
 }
