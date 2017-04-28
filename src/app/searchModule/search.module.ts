@@ -16,9 +16,10 @@ import { ShowsComponent } from './shows/shows.component';
 
 
 const routes: Routes = [
-  { path: 'shows', component: ShowsComponent},
-  { path: 'movies', component: MoviesComponent
-  }
+  { path: 'shows', component: ShowsComponent },
+  { path: 'shows/:name', component: SingleShowComponent },
+  { path: 'movies', component: MoviesComponent },
+  { path: 'movies/:name', component: SingleMovieComponent }
 ]
 
 
