@@ -61,6 +61,6 @@ export class ShowsComponent implements OnInit {
     this.userSubscriptions = event.list;
   };
   selectShowEventHandler(event: any) {
-    this.router.navigate([`/shows/${event.showId}/${this.userSubscriptions}`]);
+    this.router.navigate([`/shows/${event.resultId}/${this.userSubscriptions}`]);
   };
 }
