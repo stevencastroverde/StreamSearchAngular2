@@ -56,15 +56,11 @@ export class ShowsComponent implements OnInit {
           console.log(this.searchResults);
         });
   }
-  getSpecficShow(showId: number) {
-    this.GuideBoxService.getSpecificShow(showId, this.userSubscriptions)
-      .subscribe(data => console.log(data));
-  }
   searchEventHandler(event: any) {
     this.searchShows(event.term);
     this.userSubscriptions = event.list;
   };
   selectShowEventHandler(event: any) {
-    this.router.navigate([`/shows/${event.showId}/${event.showTitle}/${this.userSubscriptions}`]);
+    this.router.navigate([`/shows/${event.showId}/${this.userSubscriptions}`]);
   };
 }

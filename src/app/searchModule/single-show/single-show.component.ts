@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, Params} from '@angular/router';
 import { GuideBoxService } from '../services/guidebox/guide-box.service';
+
 
 @Component({
   selector: 'app-single-show',
@@ -8,27 +9,24 @@ import { GuideBoxService } from '../services/guidebox/guide-box.service';
   styleUrls: ['./single-show.component.scss']
 })
 export class SingleShowComponent implements OnInit {
-  private showName: string;
-  private showId: number;
-  private subscriptions: string;
   private showInfo: any;
+  private episodes: any;
+  private backgrounds: any;
+  private relatedShows: any;
 
 
-  constructor(private currentRoute: ActivatedRoute, private GuideBox: GuideBoxService) { }
+  constructor(private currentRoute: ActivatedRoute, private GuideBox: GuideBoxService) {}
 
-    ngOnInit() {
-    this.currentRoute.params.subscribe((params) => {
-      this.showName = params['name'];
-      this.showId = params['showId'];
-      this.subscriptions = params['subscriptions'];
-    });
-      // Get episodes, images, show information
-    this.GuideBox.getSpecificShow(this.showId, this.subscriptions)
-      .subscribe(showInfo => {
-        console.log(showInfo);
-        this.showInfo = showInfo;
-      });
 
-  }
+    ngOnInit(): void {
+     this.currentRoute.data
+       .subscribe((data: {results: any}) => {
+        this.showInfo = data.results[0];
+        this.episodes = data.results[1];
+        this.backgrounds = data.results[2];
+        this.relatedShows = data.results[3];
+       });
+    };
+
 
 }
