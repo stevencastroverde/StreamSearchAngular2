@@ -1,2 +1,2 @@
-<app-media-search></app-media-search>
-<app-search-results></app-search-results>
+<app-media-search (userSearchandSources)="searchEventHandler($event)"></app-media-search>
+<app-search-results [searchResults]="searchResults" (selectResult)="selectMovieEventHandler($event)"></app-search-results>

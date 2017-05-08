@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { GuideBoxService } from './services/guidebox/guide-box.service';
-// Service to help fetch free content before view is rendered TODO: Finish this service!
+import { SingleMovieResolverGuard } from './guards/single-movie-resolver.guard';
 import { SingleResultResolverGuard } from './guards/single-result-resolver.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,9 +17,9 @@ import { ShowsComponent } from './shows/shows.component';
 
 const routes: Routes = [
   { path: 'shows', component: ShowsComponent },
-  { path: 'shows/:showId/:subscriptions', component: SingleShowComponent, resolve: {results: SingleResultResolverGuard} },
+  { path: 'shows/:showId/:subscriptions', component: SingleShowComponent, resolve: { results: SingleResultResolverGuard} },
   { path: 'movies', component: MoviesComponent },
-  { path: 'movies/:name', component: SingleMovieComponent }
+  { path: 'movies/:movieId', component: SingleMovieComponent, resolve: { results: SingleMovieResolverGuard}}
 ]
 
 
@@ -38,6 +38,6 @@ const routes: Routes = [
     MoviesComponent,
     ShowsComponent
   ],
-  providers: [GuideBoxService, SingleResultResolverGuard]
+  providers: [GuideBoxService, SingleResultResolverGuard, SingleMovieResolverGuard]
 })
 export class SearchModule { }
