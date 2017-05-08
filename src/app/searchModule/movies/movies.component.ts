@@ -54,7 +54,6 @@ export class MoviesComponent implements OnInit {
     this.userSubscriptions = event.list;
   };
   selectMovieEventHandler(event: any) {
-    // this.router.navigate([`/movies/${event.resultId}/${this.userSubscriptions}`]);
-    console.log(event, this.userSubscriptions);
+    this.router.navigate([`/movies/${event.resultId}`]);
   };
 }

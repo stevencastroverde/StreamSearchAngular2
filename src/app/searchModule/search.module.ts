@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'shows', component: ShowsComponent },
   { path: 'shows/:showId/:subscriptions', component: SingleShowComponent, resolve: { results: SingleResultResolverGuard} },
   { path: 'movies', component: MoviesComponent },
-  { path: 'movies/:name/:movieId', component: SingleMovieComponent, resolve: { results: SingleMovieResolverGuard}}
+  { path: 'movies/:movieId', component: SingleMovieComponent, resolve: { results: SingleMovieResolverGuard}}
 ]
 
 
