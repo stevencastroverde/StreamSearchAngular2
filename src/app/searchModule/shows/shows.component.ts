@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { GuideBoxService } from '../services/guidebox/guide-box.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class ShowsComponent implements OnInit {
 
 
 
-  constructor(private GuideBoxService: GuideBoxService) { }
+  constructor(private GuideBoxService: GuideBoxService, private router: Router) { }
 
   ngOnInit() {
        this.callFreeShows();
@@ -55,15 +56,11 @@ export class ShowsComponent implements OnInit {
           console.log(this.searchResults);
         });
   }
-  getSpecficShow(showId: number) {
-    this.GuideBoxService.getSpecificShow(showId, this.userSubscriptions)
-      .subscribe(data => console.log(data));
-  }
   searchEventHandler(event: any) {
     this.searchShows(event.term);
     this.userSubscriptions = event.list;
   };
-  selectShowEventHandler(showId: number) {
-    this.getSpecficShow(showId);
+  selectShowEventHandler(event: any) {
+    this.router.navigate([`/shows/${event.showId}/${this.userSubscriptions}`]);
   };
 }

@@ -15,14 +15,18 @@ export class SearchResultsComponent implements OnInit {
   get searchResults(): Object[] {
     return this._searchResults;
   };
-  @Output () selectShow: EventEmitter<number> = new EventEmitter();
+  @Output () selectShow: EventEmitter<any> = new EventEmitter();
   showId: number;
+  showTitle: string;
   constructor() { }
 
   ngOnInit() {
 
   }
-  emitShowId(id: number) {
-    this.selectShow.emit(id);
+  emitShowInfo(id: number, title: string) {
+    this.selectShow.emit({
+      showId: id,
+      showTitle: title
+    });
   }
 }

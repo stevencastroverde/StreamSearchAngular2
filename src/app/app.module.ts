@@ -19,7 +19,8 @@ import { SearchModule } from './searchModule/search.module';
 // Router
 const appRoutes: Routes = [
   { path: '' , component: LandingPageComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
+
 ]
 
 @NgModule({
