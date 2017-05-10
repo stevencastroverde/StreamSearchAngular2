@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./shows.component.scss']
 })
 export class ShowsComponent implements OnInit {
+  private freeResources: boolean;
   @Input () searchTerm: string;
   @Input () selectedShowId: number;
   private _searchResults: Object[];
@@ -16,6 +17,7 @@ export class ShowsComponent implements OnInit {
   // Setter and Getter for Search Results
     set searchResults(shows: Object[]) {
      this._searchResults = shows;
+
    }
    get searchResults(): Object[] {
      return this._searchResults;
@@ -41,6 +43,7 @@ export class ShowsComponent implements OnInit {
   }
 
   callFreeShows() {
+      this.freeResources = false;
     this.GuideBoxService.callFreeShows()
       .subscribe(
         data => {
@@ -53,7 +56,7 @@ export class ShowsComponent implements OnInit {
       .subscribe(
         data => {
           this.searchResults = data.results;
-          console.log(this.searchResults);
+          this.freeResources = true;
         });
   }
   searchEventHandler(event: any) {

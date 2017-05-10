@@ -1,2 +1,3 @@
 <app-media-search (userSearchandSources)="searchEventHandler($event)"></app-media-search>
+<h1 *ngIf="!freeResources">Free Movies</h1>
 <app-search-results [searchResults]="searchResults" (selectResult)="selectMovieEventHandler($event)"></app-search-results>

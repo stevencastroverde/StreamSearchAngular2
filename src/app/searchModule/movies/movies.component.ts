@@ -8,13 +8,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
+  private freeResources : boolean;
   @Input () searchTerm: string;
   @Input () selectedMovieId: number;
   private _searchResults: Object[];
   private _userSubscriptions: string;
   // Setter and Getter for Search Results
-  set searchResults(shows: Object[]) {
-    this._searchResults = shows;
+  set searchResults(movies: Object[]) {
+    this._searchResults = movies;
   }
   get searchResults(): Object[] {
     return this._searchResults;
@@ -34,19 +35,22 @@ export class MoviesComponent implements OnInit {
   constructor(private GuideBoxService: GuideBoxService, private router: Router) { }
 
   ngOnInit() {
+    this.getFreeMovies();
 
   }
 
   getFreeMovies() {
+    this.freeResources = false;
     this.GuideBoxService.getFreeMovies()
-      .subscribe(data => console.log(data));
+      .subscribe(data => this.searchResults = data.results);
   }
   searchShows(searchTerm: string) {
     this.GuideBoxService.searchMovies(searchTerm)
       .subscribe(
         data => {
           this.searchResults = data.results;
-          console.log(this.searchResults);
+          this.freeResources = true;
+
         });
   }
   searchEventHandler(event: any) {
