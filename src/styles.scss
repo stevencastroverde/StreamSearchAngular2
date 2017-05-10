@@ -35,9 +35,13 @@ $teal: #45a29e;
 // Movie/Show Poster
 .poster {
   border-radius: 10%;
-  box-shadow: 3px 3px 6px #1f1f1f ;
+  box-shadow: 3px 3px 6px $black;
     &:hover{
-      box-shadow: 3px 3px 10px #1f1f1f;
-      transition: .5s linear;
+      box-shadow: 3px 3px 10px $black;
+      transition: .5s ease-out;
     }
+}
+
+body {
+  @include gradient($dark-blue, $black, vertical);
 }
