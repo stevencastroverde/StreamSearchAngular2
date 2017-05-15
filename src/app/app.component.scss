@@ -1,0 +1,16 @@
+@import '../assets/scss/variables';
+@import '../assets/scss/mixins';
+
+#background {
+  @include gradient($dark-blue, $black, vertical);
+  min-height: 100vh;
+  padding:  15% 2%;
+  z-index: 1;
+}
+
+.nav {
+  z-index: 300;
+  position: fixed;
+  width: 100%;
+
+}

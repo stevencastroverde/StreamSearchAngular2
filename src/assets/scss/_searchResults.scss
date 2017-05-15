@@ -1,0 +1,11 @@
+// Movie/Show Poster
+.poster {
+  border-radius: 4%;
+  height: auto;
+  box-shadow: 3px 3px 2px $black;
+  &:hover{
+    box-shadow: 3px 3px 10px $black;
+    transition: .5s ease-out;
+  }
+}
+
