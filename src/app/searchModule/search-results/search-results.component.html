@@ -1,8 +1,13 @@
 <div id="search-containter">
 
 <div *ngFor="let result of searchResults" (click)="emitResultsInfo(result.id, result.title)" class="result-card">
-  <h1>{{result.title}}</h1>
   <img *ngIf="showsOrMovies" src="{{result.artwork_608x342}}" class="poster">
   <img *ngIf="!showsOrMovies" src="{{result.poster_400x570}}" class="poster">
+  <div class="caption">
+  <span class="title">{{result.title}}</span>
+    <br>
+  <span *ngIf="!showsOrMovies" class="year">{{result.release_year}}</span>
+</div>
+
 </div>
 </div>

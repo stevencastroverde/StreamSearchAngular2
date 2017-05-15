@@ -1,12 +1,48 @@
+// TODO: 1. Find Correct Font 2. Nail down styling for movies and shows 3. Find better way to show results depending on shows or movies
+$black : #0b0c10;
+$dark-blue: #1f2833;
+$light-gray: #c5c6c7;
+$light-blue: #66fcf1;
+$teal: #45a29e;
+@mixin truncate ($width: 300px) {
+  max-width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+
 #search-containter {
   display: flex;
   flex-direction: row;
+  align-content: space-between;
   flex-wrap: wrap;
+  text-align: center;
+
 }
 
 .result-card {
-  color: white;
-  font-family: "Bauhaus 93";
-  margin: auto;
+  color: $teal;
+  font-family: "Helvetica Neue";
+  margin: 2% auto;
+  cursor: pointer;
+  .caption {
+    display: block;
+    .title {
+      font-size: 1.5em;
+      @include truncate(80%);
+    }
+    .year {
+      font-size: 1.2em;
+    }
+  }
 
+   &:hover {
+    color: #fefefe;
+  }
 }
+
+
+
+
