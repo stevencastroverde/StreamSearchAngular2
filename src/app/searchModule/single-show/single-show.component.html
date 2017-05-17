@@ -1,1 +1,13 @@
+<img src="{{backgroundImage}}">
+
 <h1>{{showInfo.title}}</h1>
+<img src="{{showInfo.poster}}">
+<h2 *ngFor=" let genre of showInfo.genres">{{genre.title}}</h2>
+
+<div class="case">
+  <div *ngFor=" let castMember of showInfo.cast">
+    <img src="{{castMember.image}}">
+    <h2>{{castMember.name}} as {{castMember.character_name}}</h2>
+  </div>
+</div>
+<p>{{showInfo.overview}}</p>

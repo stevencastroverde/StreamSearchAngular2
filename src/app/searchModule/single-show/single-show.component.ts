@@ -13,6 +13,7 @@ export class SingleShowComponent implements OnInit {
   private episodes: any;
   private backgrounds: any;
   private relatedShows: any;
+  private backgroundImage: string;
 
 
   constructor(private currentRoute: ActivatedRoute, private GuideBox: GuideBoxService) {}
@@ -22,11 +23,10 @@ export class SingleShowComponent implements OnInit {
      this.currentRoute.data
        .subscribe((data: {results: any}) => {
         this.showInfo = data.results[0];
-        this.episodes = data.results[1];
-        this.backgrounds = data.results[2];
-        this.relatedShows = data.results[3];
+        this.episodes = data.results[1].results;
+        this.backgrounds = data.results[2].results.backgrounds;
+        this.relatedShows = data.results[3].results;
        });
+     this.backgroundImage = this.backgrounds[0].original.url;
     };
-
-
 }

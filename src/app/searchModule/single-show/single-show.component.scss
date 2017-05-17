@@ -1,0 +1,9 @@
+@import '../../../assets/scss/mixins';
+
+
+#background {
+  height: 100%;
+  width: 100%;
+  @include opacity(.4);
+  z-index: -3;
+}
