@@ -1,57 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
-// Color Scheme
-$black : #0b0c10;
-$dark-blue: #1f2833;
-$light-gray: #c5c6c7;
-$light-blue: #66fcf1;
-$teal: #45a29e;
+@import "assets/scss/normalize";
 
 
-// Gradient
-@mixin gradient($start-color, $end-color, $orientation) {
-  background: $start-color;
-  @if $orientation == 'vertical' {
-    background: -webkit-linear-gradient(top, $start-color, $end-color);
-    background: linear-gradient(to bottom, $start-color, $end-color);
-  } @else if $orientation == 'horizontal' {
-    background: -webkit-linear-gradient(left, $start-color, $end-color);
-    background: linear-gradient(to right, $start-color, $end-color);
-  } @else {
-    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
-    background: radial-gradient(ellipse at center, $start-color, $end-color);
-  }
-}
 
 
-// Opacity
-@mixin opacity($opacity) {
-  opacity: $opacity;
-  $opacity-ie: $opacity * 100;
-  filter: alpha(opacity=$opacity-ie); //IE8
-}
 
 
-// Movie/Show Poster
-.poster {
-  border-radius: 4%;
-  height: auto;
-  box-shadow: 3px 3px 2px $black;
-    &:hover{
-      box-shadow: 3px 3px 10px $black;
-      transition: .5s ease-out;
-    }
-}
-
-//truncate text
-@mixin truncate ($width: 300px) {
-  max-width: $width;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-}
-
-body {
-  @include gradient($dark-blue, $black, vertical);
-}

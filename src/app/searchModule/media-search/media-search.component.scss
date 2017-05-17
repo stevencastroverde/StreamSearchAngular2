@@ -1,0 +1,42 @@
+
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
+.searchForm {
+  padding: 2%;
+  position: relative;
+  margin: 0 auto;
+  background-color: $light-gray;
+  border-radius: 5px;
+  display: flex;
+}
+
+#searchInput {
+  border-style: none;
+  flex-grow: 2;
+  border-bottom: 1px solid $black;
+  background-color: transparent;
+  padding: 1%;
+  &:focus {
+
+  }
+
+}
+
+
+
+
+
+#submit {
+  background-color: transparent;
+  border: 1px solid #fefefe;
+  font-size: 1.5em;
+  transition: background-color .5s ease-in-out;
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-family: Margot;
+  padding: 1%;
+  color: #fefefe;
+    &:hover {
+      background-color: $teal;
+    }
+}

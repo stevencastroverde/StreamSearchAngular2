@@ -1,6 +1,6 @@
-<form [formGroup]="formModel" (ngSubmit)="onSubmit()">
-  <input type="text" formControlName="search">
-  <div formGroupName="subscriptionsGroup">
+<form [formGroup]="formModel" (ngSubmit)="onSubmit()" class="searchForm">
+  <input type="text" formControlName="search" placeholder="Title" id="searchInput">
+  <div id="checkboxes" formGroupName="subscriptionsGroup">
    <div>Amazon Prime<input type="checkbox" formControlName="amazon_prime"></div>
     <div>Hulu<input type="checkbox" formControlName="hulu_plus"></div>
     <div>Netflix<input type="checkbox" formControlName="netflix"></div>
@@ -17,6 +17,6 @@
 
 
   </div>
-  <button type="submit">Search!</button>
+  <button id="submit" type="submit">Search!</button>
 
 </form>

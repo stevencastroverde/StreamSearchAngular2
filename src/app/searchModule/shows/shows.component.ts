@@ -67,3 +67,5 @@ export class ShowsComponent implements OnInit {
     this.router.navigate([`/shows/${event.resultId}/${this.userSubscriptions}`]);
   };
 }
+
+// TODO: Set subscriptions to local storage so if the user switches between movies and shows they don't have to select them again
