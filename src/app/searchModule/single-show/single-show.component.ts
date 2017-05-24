@@ -13,10 +13,10 @@ export class SingleShowComponent implements OnInit {
   private episodes: any;
   private backgrounds: any;
   private relatedShows: any;
-  private backgroundImage: string;
+  private backgroundImage: any;
 
 
-  constructor(private currentRoute: ActivatedRoute, private GuideBox: GuideBoxService) {}
+  constructor(private currentRoute: ActivatedRoute, private GuideBox: GuideBoxService, ) {}
 
 
     ngOnInit(): void {
@@ -29,4 +29,13 @@ export class SingleShowComponent implements OnInit {
        });
      this.backgroundImage = this.backgrounds[0].original.url;
     };
+
+
+
+
+
+
+
+
+
 }
