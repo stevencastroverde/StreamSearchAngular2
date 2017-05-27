@@ -14,6 +14,7 @@ export class SingleShowComponent implements OnInit {
   private backgrounds: any;
   private relatedShows: any;
   private backgroundImage: any;
+  private userSubscriptions: any;
 
 
   constructor(private currentRoute: ActivatedRoute, private GuideBox: GuideBoxService, ) {}
@@ -26,9 +27,9 @@ export class SingleShowComponent implements OnInit {
         this.episodes = data.results[1].results;
         this.backgrounds = data.results[2].results.backgrounds;
         this.relatedShows = data.results[3].results;
-        console.log(data.results);
+        console.log(this.currentRoute.params);
        });
-     this.backgroundImage = this.backgrounds[0].original.url;
+      this.userSubscriptions = this.currentRoute.params['value']['subscriptions'];
     };
 
 

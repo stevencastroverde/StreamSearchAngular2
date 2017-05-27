@@ -24,5 +24,9 @@
 
 </section>
 <section id="related-shows">
+  <div class="related-show" *ngFor="let show of relatedShows">
+    <h3>{{show.title}}</h3>
+   <a href="/shows/{{show.id}}/{{userSubscriptions}}"><img src="{{show.artwork_448x252}}"></a>
+  </div>
 
 </section>
