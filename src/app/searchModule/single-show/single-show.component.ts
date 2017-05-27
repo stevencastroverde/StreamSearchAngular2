@@ -26,6 +26,7 @@ export class SingleShowComponent implements OnInit {
         this.episodes = data.results[1].results;
         this.backgrounds = data.results[2].results.backgrounds;
         this.relatedShows = data.results[3].results;
+        console.log(data.results);
        });
      this.backgroundImage = this.backgrounds[0].original.url;
     };
