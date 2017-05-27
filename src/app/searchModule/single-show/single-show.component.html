@@ -1,12 +1,22 @@
 
-<h1>{{showInfo.title}}</h1>
-<img src="{{showInfo.poster}}">
-<h2 *ngFor=" let genre of showInfo.genres">{{genre.title}}</h2>
-
-<div class="case">
-  <div *ngFor=" let castMember of showInfo.cast">
-    <img src="{{castMember.image}}">
-    <h2>{{castMember.name}} as {{castMember.character_name}}</h2>
+<section id="show-overview">
+  <img src="{{showInfo.poster}}">
+  <div class="show-details">
+    <h1>{{showInfo.title}}</h1>
+    <h2>{{showInfo.air_day_of_week}}s at {{showInfo.air_time}} on {{showInfo.channels[0].name}}</h2>
+    <h2 *ngFor=" let genre of showInfo.genres">{{genre.title}}</h2>
+    <p>{{showInfo.overview}}</p>
   </div>
-</div>
-<p>{{showInfo.overview}}</p>
+  <!--<div class="cast">-->
+    <!--<div *ngFor=" let castMember of showInfo.cast">-->
+    <!--<img src="{{castMember.image}}">-->
+    <!--<h2>{{castMember.name}} as {{castMember.character_name}}</h2>-->
+  <!--</div>-->
+  <!--</div>-->
+</section>
+<section class="show-episodes">
+
+</section>
+<section class="related-shows">
+
+</section>
