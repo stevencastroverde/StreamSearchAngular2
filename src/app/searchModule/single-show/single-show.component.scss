@@ -18,8 +18,7 @@
 
 #show-overview {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
     img {
       height: auto;
@@ -33,6 +32,24 @@
           font-size: 1.5em;
         }
     }
+};
+
+.cast {
+  width: 30%;
+  height: 30vh;
+  overflow: scroll;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background-color: #fefefe;
+   img {
+     width: 40%;
+     height: auto;
+   }
+  span {
+
+  }
+
 }
 
 #show-episodes {

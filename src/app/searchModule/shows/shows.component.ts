@@ -24,10 +24,7 @@ export class ShowsComponent implements OnInit {
    }
   @Input ()
     set userSubscriptions(value: string){
-      this._userSubscriptions = value;
-      if (this._userSubscriptions === null) {
-        this._userSubscriptions = 'free';
-      }
+      this._userSubscriptions = value === null ? 'free' : value;
     }
     get userSubscriptions(): string {
       return this._userSubscriptions;

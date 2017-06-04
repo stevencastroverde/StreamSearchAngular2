@@ -8,18 +8,21 @@
     <!--<h2 *ngFor=" let genre of showInfo.genres">{{genre.title}}</h2>-->
     <p> {{showInfo.overview}}</p>
   </div>
-  <!--<div class="cast">-->
-    <!--<div *ngFor=" let castMember of showInfo.cast">-->
-    <!--<img src="{{castMember.image}}">-->
-    <!--<h2>{{castMember.name}} as {{castMember.character_name}}</h2>-->
-  <!--</div>-->
-  <!--</div>-->
+</section>
+<section class="cast" >
+    <div *ngFor=" let castMember of showInfo.cast">
+      <img src="{{castMember.image}}">
+      <span>{{castMember.name}} as {{castMember.character_name}}</span>
+    </div>
+
 </section>
 <h2>Episodes</h2>
 <section id="show-episodes">
-  <div class="episode" *ngFor="let episode of episodes">
-    <img src="{{episode.thumbnail_400x225}}">
-    <h3>{{episode.title}}</h3>
+  <div class="episode" *ngFor="let season of episodes">
+    <h1>{{season.season}}</h1>
+    <div *ngFor="let episode of season.episodes">
+      <h3>{{episode.title}}</h3>
+    </div>
   </div>
 
 </section>
