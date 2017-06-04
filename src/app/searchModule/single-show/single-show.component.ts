@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params} from '@angular/router';
 import { GuideBoxService } from '../services/guidebox/guide-box.service';
+import {groupBy} from "rxjs/operator/groupBy";
 
 
 @Component({
@@ -24,18 +25,32 @@ export class SingleShowComponent implements OnInit {
      this.currentRoute.data
        .subscribe((data: {results: any}) => {
         this.showInfo = data.results[0];
-        this.episodes = data.results[1].results;
+        this.episodes = this.sortEpisodesBySeason(data.results[1].results);
         this.backgrounds = data.results[2].results.backgrounds;
         this.relatedShows = data.results[3].results;
-        console.log(this.currentRoute.params);
        });
       this.userSubscriptions = this.currentRoute.params['value']['subscriptions'];
+      console.log(this.episodes);
     };
 
 
 
-
-
+  sortEpisodesBySeason(array) {
+    let episodesBySeason = {};
+    for ( let i = 0; i < array.length; i++) {
+      let results = array[i];
+      if (!episodesBySeason[results.season_number]) {
+        episodesBySeason[results.season_number] = {};
+      }
+      let season = episodesBySeason[array[i].season_number];
+      season[results.episode_number] = results;
+    }
+    const myArray = [];
+    for(let seasonNumber in episodesBySeason) {
+      myArray.push({season: seasonNumber, episodes: episodesBySeason[seasonNumber]});
+    }
+    return myArray;
+  }
 
 
 
