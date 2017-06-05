@@ -40,7 +40,7 @@ export class SingleShowComponent implements OnInit {
     for ( let i = 0; i < array.length; i++) {
       let results = array[i];
       if (!episodesBySeason[results.season_number]) {
-        episodesBySeason[results.season_number] = {};
+        episodesBySeason[results.season_number] = [];
       }
       let season = episodesBySeason[array[i].season_number];
       season[results.episode_number] = results;
