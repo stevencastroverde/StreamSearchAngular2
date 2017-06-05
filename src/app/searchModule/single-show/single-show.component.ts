@@ -11,7 +11,7 @@ import {groupBy} from "rxjs/operator/groupBy";
 })
 export class SingleShowComponent implements OnInit {
   private showInfo: any;
-  private episodes: any;
+  private seasons: any;
   private backgrounds: any;
   private relatedShows: any;
   private backgroundImage: any;
@@ -25,29 +25,28 @@ export class SingleShowComponent implements OnInit {
      this.currentRoute.data
        .subscribe((data: {results: any}) => {
         this.showInfo = data.results[0];
-        this.episodes = this.sortEpisodesBySeason(data.results[1].results);
+        this.seasons = this.sortEpisodesBySeason(data.results[1].results);
         this.backgrounds = data.results[2].results.backgrounds;
         this.relatedShows = data.results[3].results;
        });
       this.userSubscriptions = this.currentRoute.params['value']['subscriptions'];
-      console.log(this.episodes);
+      console.log(this.seasons);
     };
 
 
 
   sortEpisodesBySeason(array) {
-    let episodesBySeason = {};
+    let seasonNumber = {};
     for ( let i = 0; i < array.length; i++) {
-      let results = array[i];
-      if (!episodesBySeason[results.season_number]) {
-        episodesBySeason[results.season_number] = [];
+      let season = array[i].season_number;
+      if (!seasonNumber[season]) {
+        seasonNumber[season] = [];
       }
-      let season = episodesBySeason[array[i].season_number];
-      season[results.episode_number] = results;
+       seasonNumber[season].push(array[i]);
     }
     const myArray = [];
-    for(let seasonNumber in episodesBySeason) {
-      myArray.push({season: seasonNumber, episodes: episodesBySeason[seasonNumber]});
+    for (let key in seasonNumber) {
+      myArray.push({season: key, episodes: seasonNumber[key]});
     }
     return myArray;
   }
