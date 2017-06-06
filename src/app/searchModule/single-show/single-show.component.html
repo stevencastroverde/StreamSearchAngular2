@@ -18,13 +18,13 @@
 </section>
 <h2>Episodes</h2>
 <section id="show-episodes">
-  <div class="episode" *ngFor="let season of seasons; let i=index">
-    <h1>{{season.season}}</h1>
-    <div *ngFor="let episode of season.episodes; let j = index">
-    <h3>{{episode.title}} Hello</h3>
+  <div class="season" *ngFor="let season of seasons">
+    <h1> Season {{season.season}}</h1>
+    <div *ngFor="let episode of season.episodes" class="episodes">
+      <img src="{{episode.thumbnail_304x171}}">
+      <h3>{{episode.title}}</h3>
+    </div>
   </div>
-  </div>
-
 </section>
 <section id="related-shows">
   <div class="related-show" *ngFor="let show of relatedShows">

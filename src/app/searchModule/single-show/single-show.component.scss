@@ -46,20 +46,25 @@
      width: 40%;
      height: auto;
    }
-  span {
-
-  }
 
 }
 
-#show-episodes {
+.season {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin: 2%;
-  .episode {
-    margin: 1%;
-    background-color: $teal;
-  }
+  flex-flow: row nowrap;
+  overflow: scroll;
+  width: 90%;
+  background-color: #fefefe;
+  margin: 3% auto;
+    h1 {
+      display: block;
+    }
+    .episodes {
+      margin: 3%;
+      border: solid 1px $black;
+      h3 {
+        @include truncate(304px);
+        margin: 0;
+      }
+    }
 }
